@@ -27,11 +27,27 @@ namespace espausa
         }
         public persona(string nome)
         {
-            this.nome = nome;
+            this.nome = "";
         }
     }
-    class Banca : persona
+    class Banca
     {
+        private string nome;
+        public string Nome
+        {
+            get { return nome; }
+            set
+            {
+                if (value.Length > 2 && value != null)
+                {
+                    nome = value;
+                }
+                else
+                {
+                    Console.WriteLine("nome non valido");
+                }
+            }
+        }
         private bool chiu = false;
         public bool Chiu
         {
@@ -54,10 +70,11 @@ namespace espausa
                 }
             }
         }
-        public Banca(float saldo, bool chiu, string Nom) : base(Nom)
+        public Banca()
         {
-            this.saldo = saldo;
-            this.chiu = chiu;
+            this.saldo = 0;
+            this.chiu = false;
+            Nome = "";
         }
         public void ApriConto()
         {
@@ -147,11 +164,8 @@ namespace espausa
 internal class Program
 {
     static void Main(string[] args)
-    {
-        int saldo = 0;
-        bool chiu = false;  
-        string Nome = "t";
-        Banca b = new Banca(saldo,chiu,Nome);
+    { 
+        Banca b = new Banca();
         Console.WriteLine("1. Apri Contocorrente");
         Console.WriteLine("2. Chiudi Contocorrente");
         Console.WriteLine("3. Deposita soldi Contocorrente");
