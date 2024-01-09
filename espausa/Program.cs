@@ -72,24 +72,24 @@ namespace espausa
         }
         public Banca()
         {
-            this.saldo = 0;
-            this.chiu = false;
-            Nome = "";
+            saldo = 0;
+            chiu = false;
+            nome = "";
         }
         public void ApriConto()
         {
             chiu = true;
             Console.WriteLine("Scrivi il nome del proprietario del conto: ");
             string N = Console.ReadLine();
-            Nome = N;
+            nome = N;
             Console.WriteLine("Conto aperto");
             Console.ReadLine();
         }
         public void ChiudiConto()
         {
             Console.WriteLine("Inserisci nome:");
-            string nome = Console.ReadLine();
-            if (Nome == nome)
+            string nom = Console.ReadLine();
+            if (nome == nom)
             {
                 chiu = false;
                 Console.WriteLine("Il conto è stato chiuso.");
@@ -107,8 +107,8 @@ namespace espausa
         public void DepositaSuConto()
         {
             Console.WriteLine("Inserisci nome:");
-            string nome = Console.ReadLine();
-            if (Nome == nome)
+            string nom = Console.ReadLine();
+            if (nome == nom)
             {
                 Console.WriteLine("Inserisci soldi da depositare");
                 int s = Convert.ToInt32(Console.ReadLine());
@@ -126,8 +126,8 @@ namespace espausa
         public void PrelevaDaConto()
         {
             Console.WriteLine("Inserisci nome:");
-            string nome = Console.ReadLine();
-            if (Nome == nome)
+            string nom = Console.ReadLine();
+            if (nome == nom)
             {
                 Console.WriteLine("Inserisci soldi da prelevare");
                 int p = Convert.ToInt32(Console.ReadLine());
@@ -138,13 +138,14 @@ namespace espausa
             else
             {
                 Console.WriteLine("Il nome non trovato");
+                Console.ReadLine();
             }
         }
         public void VediSaldoConto()
         {
             Console.WriteLine("Inserisci nome:");
-            string nome = Console.ReadLine();
-            if (Nome == nome)
+            string nom = Console.ReadLine();
+            if (nome == nom)
             {
                 Console.WriteLine("Saldo del conto: " + saldo);
                 Console.ReadLine();
