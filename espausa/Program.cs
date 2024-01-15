@@ -6,30 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace espausa
-{
-    class persona
-    {
-        private string nome;
-        public string Nome
-        {
-            get { return nome; }
-            set 
-            { 
-                if (value.Length > 2 && value != null)
-                {
-                    nome = value;
-                }
-                else
-                {
-                    Console.WriteLine("nome non valido");
-                }
-            }
-        }
-        public persona(string nome)
-        {
-            this.nome = "";
-        }
-    }
+{ 
+    
     class Banca
     {
         private string nome;
@@ -80,8 +58,7 @@ namespace espausa
         {
             chiu = true;
             Console.WriteLine("Scrivi il nome del proprietario del conto: ");
-            string N = Console.ReadLine();
-            nome = N;
+            nome = Console.ReadLine(); ;
             Console.WriteLine("Conto aperto");
             Console.ReadLine();
         }
@@ -95,14 +72,14 @@ namespace espausa
                 Console.WriteLine("Il conto è stato chiuso.");
                 Console.WriteLine("Saldo da prelevare: " + saldo);
                 saldo = 0;
-                Console.WriteLine("Conto chiuso");
-                Console.ReadLine();
+                nome = "";
             }
             else
             {
                 Console.WriteLine("Il nome non trovato");
+                
             }
-
+            Console.ReadLine();
         }
         public void DepositaSuConto()
         {
@@ -113,14 +90,13 @@ namespace espausa
                 Console.WriteLine("Inserisci soldi da depositare");
                 int s = Convert.ToInt32(Console.ReadLine());
                 saldo += s;
-                Console.WriteLine("Il saldo corrente è: " + saldo);
-                Console.ReadLine();
+                Console.WriteLine("Il saldo corrente è: " + saldo);               
             }
             else
             {
                 Console.WriteLine("Il nome non trovato");
             }
-      
+            Console.ReadLine();
 
         }
         public void PrelevaDaConto()
@@ -133,13 +109,14 @@ namespace espausa
                 int p = Convert.ToInt32(Console.ReadLine());
                 saldo -= p;
                 Console.WriteLine("Il saldo corrente è: " + saldo);
-                Console.ReadLine();
+                
             }
             else
             {
                 Console.WriteLine("Il nome non trovato");
-                Console.ReadLine();
+                
             }
+            Console.ReadLine();
         }
         public void VediSaldoConto()
         {
@@ -148,12 +125,12 @@ namespace espausa
             if (nome == nom)
             {
                 Console.WriteLine("Saldo del conto: " + saldo);
-                Console.ReadLine();
             }
             else
             {
                 Console.WriteLine("Il nome non trovato");
             }
+            Console.ReadLine();
         }
         public void VediInfoConto()
         {
@@ -167,30 +144,51 @@ internal class Program
     static void Main(string[] args)
     { 
         Banca b = new Banca();
-        Console.WriteLine("1. Apri Contocorrente");
-        Console.WriteLine("2. Chiudi Contocorrente");
-        Console.WriteLine("3. Deposita soldi Contocorrente");
-        Console.WriteLine("4. Preleva soldi su Contocorrente");
-        Console.WriteLine("5. Vedi saldo Contocorrente");
-        Console.WriteLine("6. Vedi info Contocorrente");
-        string menu = Console.ReadLine();
-        switch (menu)
+        bool m = true;
+        while (m == true)
         {
-            case "1":
-                b.ApriConto();
-                break;
-            case "2":
-                b.ChiudiConto();
-                break;
-            case "3":
-                b.DepositaSuConto(); 
-                break;
-            case "4":
-                b.PrelevaDaConto();
-                break;
-            case "5":
-                b.VediSaldoConto();
-                break;
-        }
+            Console.WriteLine("1. Apri Contocorrente");
+            Console.WriteLine("2. Chiudi Contocorrente");
+            Console.WriteLine("3. Deposita soldi Contocorrente");
+            Console.WriteLine("4. Preleva soldi su Contocorrente");
+            Console.WriteLine("5. Vedi saldo Contocorrente");
+            Console.WriteLine("6. Vedi info Contocorrente");
+            Console.WriteLine("0. Esci");
+            Console.WriteLine("Inserisci un'azione: ");
+            string menu = Console.ReadLine();
+            switch (menu)
+            {
+                case "1":
+                    b.ApriConto();
+                    Console.Clear();
+                    break;
+                case "2":
+                    b.ChiudiConto();
+                    Console.Clear();
+                    break;
+                case "3":
+                    b.DepositaSuConto();
+                    Console.Clear();
+                    break;
+                case "4":
+                    b.PrelevaDaConto();
+                    Console.Clear();
+                    break;
+                case "5":
+                    b.VediSaldoConto();
+                    Console.Clear();
+                    break;
+                case "6":
+                    b.VediInfoConto();
+                    Console.Clear();
+                    break;
+                case "0":
+                    Console.WriteLine("Uscita dal menu.");
+                    Console.ReadLine();
+                    m = false;
+                    break;
+
+            }
+        }  
     }
 }
