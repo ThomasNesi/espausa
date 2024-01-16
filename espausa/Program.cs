@@ -65,21 +65,11 @@ namespace espausa
         }
         public void ChiudiConto()
         {
-            Console.WriteLine("Inserisci nome:");
-            string nom = Console.ReadLine();
-            if (nome == nom)
-            {
-                chiu = false;
-                Console.WriteLine("Il conto è stato chiuso.");
-                Console.WriteLine("Saldo da prelevare: " + saldo);
-                saldo = 0;
-                nome = "";
-            }
-            else
-            {
-                Console.WriteLine("Il nome non trovato");
-                
-            }
+            chiu = false;
+            Console.WriteLine("Il conto è stato chiuso.");
+            Console.WriteLine("Saldo da prelevare: " + saldo);
+            saldo = 0;
+            Nome = "";
             Console.ReadLine();
         }
         public void DepositaSuConto()
@@ -93,40 +83,30 @@ namespace espausa
         }
         public void PrelevaDaConto()
         {
-            Console.WriteLine("Inserisci nome:");
-            string nom = Console.ReadLine();
-            if (nome == nom)
-            {
-                Console.WriteLine("Inserisci soldi da prelevare");
-                int p = Convert.ToInt32(Console.ReadLine());
-                saldo -= p;
-                Console.WriteLine("Il saldo corrente è: " + saldo);
-                
-            }
-            else
-            {
-                Console.WriteLine("Il nome non trovato");
-                
-            }
+            Console.WriteLine("Inserisci soldi da prelevare");
+            int p = Convert.ToInt32(Console.ReadLine());
+            saldo -= p;
+            Console.WriteLine("Il saldo corrente è: " + saldo);
             Console.ReadLine();
         }
         public void VediSaldoConto()
         {
-            Console.WriteLine("Inserisci nome:");
-            string nom = Console.ReadLine();
-            if (nome == nom)
-            {
-                Console.WriteLine("Saldo del conto: " + saldo);
-            }
-            else
-            {
-                Console.WriteLine("Il nome non trovato");
-            }
+            Console.WriteLine("Saldo del conto: " + saldo);
             Console.ReadLine();
         }
         public void VediInfoConto()
         {
-            Console.WriteLine("");
+            Console.WriteLine("Proprietario conto: " + Nome);
+            Console.WriteLine("Saldo del conto: " + saldo);
+            if (chiu == false)
+            {
+                Console.WriteLine("Stato del conto:  aperto");
+            }
+            else
+            {
+                Console.WriteLine("Stato del conto:  chiuso");
+            }
+            Console.ReadLine();
         }
 
     }
@@ -137,7 +117,6 @@ internal class Program
     { 
         Banca[] b = new Banca[5];
         bool m = true;
-        string nom = "";
         while (m == true)
         {
             Console.WriteLine("1. Apri Contocorrente");
@@ -165,84 +144,84 @@ internal class Program
                     break;
                 case "2":
                     Console.WriteLine("Inserisci nome:");
-                    nom = Console.ReadLine();
+                    string nom = Console.ReadLine();
                     for (int i = 0; i < b.Length; i++)
                     {
-                        if (nom == b[i].Nome)
+                        if (b[i] == null)
                         {
-                            b[i] = new Banca();
+
+                        }
+                        else if (nom == b[i].Nome)
+                        {
                             b[i].ChiudiConto();
                             Console.Clear();
                             break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Nome del proprietario non trovato");
                         }
                     }
                     break;
                 case "3":
                     Console.WriteLine("Inserisci nome:");
-                    nom = Console.ReadLine();
+                    string n = Console.ReadLine();
                     for (int i = 0; i < b.Length; i++)
                     {
-                        if (nom == b[i].Nome)
+                        if (b[i] == null)
                         {
-                            
-                            b[i] = new Banca();
+
+                        }
+                        else if (n == b[i].Nome)
+                        {
                             b[i].DepositaSuConto();
                             Console.Clear();
                             break;
                             
                         }
-                        else
-                        {
-                            Console.WriteLine("Nome del proprietario non trovato");
-                        }
                     }
                     break;
                 case "4":
                     Console.WriteLine("Inserisci nome:");
-                    nom = Console.ReadLine();
+                    string nome1 = Console.ReadLine();
                     for (int i = 0; i < b.Length; i++)
                     {
-                        if (nom == b[i].Nome)
+                        if (b[i] == null)
                         {
-                            b[i] = new Banca();
+
+                        }
+                        else if (nome1 == b[i].Nome)
+                        {
                             b[i].PrelevaDaConto();
                             Console.Clear();
                             break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Nome del proprietario non trovato");
                         }
                     }
                     break;
                 case "5":
                     Console.WriteLine("Inserisci nome:");
-                    nom = Console.ReadLine();
-                    for (int i = 0; i < b.Length; i++)
-                    {
-                        if (nom == b[i].Nome)
-                        {
-                            b[i] = new Banca();
-                            b[i].VediSaldoConto();
-                            Console.Clear();
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("Nome del proprietario non trovato");
-                        }
-                    }
-                    break;
-                case "6":
+                    string nome = Console.ReadLine();
                     for (int i = 0; i < b.Length; i++)
                     {
                         if (b[i] == null)
                         {
-                            b[i] = new Banca();
+
+                        }
+                        else if (nome == b[i].Nome)
+                        {
+                            b[i].VediSaldoConto();
+                            Console.Clear();
+                            break;
+                        }
+                    }
+                    break;
+                case "6":
+                    Console.WriteLine("Inserisci nome:");
+                    string nome2 = Console.ReadLine();
+                    for (int i = 0; i < b.Length; i++)
+                    {
+                        if (b[i] == null)
+                        {
+
+                        }
+                        else if (nome2 == b[i].Nome)
+                        {
                             b[i].VediInfoConto();
                             Console.Clear();
                             break;
